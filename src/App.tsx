@@ -1,11 +1,9 @@
 import './styles/App.css';
+import { ThemeProvider } from 'styled-components';
+import { lightTheme } from './styles/themes/lightTheme';
 
 function App() {
-  return (
-    <div>
-      <h1>hello</h1>
-    </div>
-  );
+  return <ThemeProvider theme={lightTheme}></ThemeProvider>;
 }
 
 export default App;
