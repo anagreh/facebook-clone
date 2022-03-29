@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const Wrapper = styled.a`
   /* const height, width 100 */
-  border: 1px solid red;
   display: block;
   background-color: ${({ theme }) => theme.color.bg.default || '#fff'};
 
