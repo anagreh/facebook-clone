@@ -11,6 +11,7 @@ declare module 'styled-components' {
         default: string;
         hover: string;
         tag: string;
+        icon: string;
       };
     };
   }

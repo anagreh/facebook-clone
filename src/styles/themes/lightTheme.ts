@@ -10,6 +10,7 @@ export const lightTheme: DefaultTheme = {
       default: 'white',
       hover: '#eee',
       tag: 'rgba(0,0,0,.7)',
+      icon: '#ccc',
     },
   },
 };
