@@ -9,6 +9,7 @@ export const lightTheme: DefaultTheme = {
     bg: {
       default: 'white',
       hover: '#eee',
+      tag: 'rgba(0,0,0,.7)',
     },
   },
 };

@@ -10,6 +10,7 @@ declare module 'styled-components' {
       bg: {
         default: string;
         hover: string;
+        tag: string;
       };
     };
   }
