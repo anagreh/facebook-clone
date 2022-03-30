@@ -11,6 +11,10 @@ export const lightTheme: DefaultTheme = {
       hover: '#eee',
       tag: 'rgba(0,0,0,.7)',
       icon: '#ccc',
+      primary: '#eee',
+    },
+    icon: {
+      default: '#aaa',
     },
   },
 };

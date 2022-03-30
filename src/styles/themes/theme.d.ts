@@ -12,6 +12,10 @@ declare module 'styled-components' {
         hover: string;
         tag: string;
         icon: string;
+        primary: string;
+      };
+      icon: {
+        default: string;
       };
     };
   }
