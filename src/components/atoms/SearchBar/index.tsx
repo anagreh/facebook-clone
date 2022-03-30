@@ -1,6 +1,5 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { FaSearch } from 'react-icons/fa';
-import { useState } from 'react';
 
 export const FormStyled = styled.form<{ isFocused: boolean }>`
   display: flex;
