@@ -1,23 +1,22 @@
-import styled from 'styled-components';
-import { FaSearch } from 'react-icons/fa';
+import styled, { css } from 'styled-components';
+import { FaSearch, FaArrowLeft } from 'react-icons/fa';
 
-export const FormStyled = styled.form<{ isFocused: boolean }>`
+export const FormStyled = styled.form`
   display: flex;
 
   height: 2.5em;
-  border-radius: 5em;
+  /* border-radius: 5em; */
 
-  background-color: ${({ theme }) => theme.color.bg.primary};
+  flex-grow: 1;
 
-  svg {
-    height: 100%;
+  div {
+    display: flex;
 
-    padding-inline-start: 0.8em;
+    flex-grow: 1;
+    /* height: 2.5em; */
+    border-radius: 5em;
 
-    transition: width 1s;
-    width: ${(props) => (props.isFocused ? '0' : '2em')};
-
-    color: ${({ theme }) => theme.color.icon.default};
+    background-color: ${({ theme }) => theme.color.bg.primary};
   }
 `;
 
@@ -34,21 +33,62 @@ export const InputStyled = styled.input`
   }
 `;
 
+export const SearchIconStyled = styled(FaSearch)<{ isFocused: boolean }>`
+  height: 100%;
+
+  padding-inline-start: 0.8em;
+
+  transition: width 0.3s;
+  width: ${(props) => (props.isFocused ? '0' : '2em')};
+
+  color: ${({ theme }) => theme.color.icon.default};
+`;
+
+export const BackIconStyled = styled(FaArrowLeft)<{ isFocused: boolean }>`
+  height: 100%;
+
+  padding-inline: 0em;
+  width: 0em;
+
+  transition: all 0.3s;
+  ${(props) =>
+    props.isFocused &&
+    css`
+      padding-inline: 0.4em;
+
+      width: 2em;
+    `};
+
+  border-radius: 50%;
+
+  color: ${({ theme }) => theme.color.icon.default};
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.bg.hover};
+  }
+`;
+
 interface props {
   isFocused: boolean;
-  handleFocus: (focused: boolean) => void;
+  setIsFocused: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SearchBar: React.FC<props> = ({ isFocused, handleFocus }) => {
+const SearchBar: React.FC<props> = ({ isFocused, setIsFocused }) => {
   return (
-    <FormStyled isFocused={isFocused}>
-      <FaSearch />
-      <InputStyled
-        onFocus={() => handleFocus(true)}
-        onBlur={() => handleFocus(false)}
-        placeholder="Search Facebook"
-      ></InputStyled>
-      {isFocused && <h1 style={{ position: 'absolute' }}>hi</h1>}
+    <FormStyled>
+      <BackIconStyled
+        isFocused={isFocused}
+        onClick={() => setIsFocused(false)}
+      />
+      <div>
+        <SearchIconStyled isFocused={isFocused} />
+        <InputStyled
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          placeholder="Search Facebook"
+        ></InputStyled>
+      </div>
     </FormStyled>
   );
 };
