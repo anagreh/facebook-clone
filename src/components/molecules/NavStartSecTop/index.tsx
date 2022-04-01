@@ -16,21 +16,22 @@ export const LogoWrapper = styled.div<{ isFocused: boolean }>`
 
   padding-inline: 0.4em;
 
+  flex-shrink: 0;
+
   transition: all 0.3s;
   width: ${(props) => props.isFocused && 0};
   padding-inline: ${(props) => props.isFocused && 0}; ;
 `;
 
-const NavStartSec = () => {
-  const [isFocused, setIsFocused] = useState(false);
+const NavStartSecTop: React.FC<{ isFocused: boolean }> = ({ isFocused }) => {
   return (
     <Wrapper>
       <LogoWrapper isFocused={isFocused}>
         <FaFacebook size="100%" />
       </LogoWrapper>
-      <SearchBar isFocused={isFocused} setIsFocused={setIsFocused} />
+      <SearchBar isFocused={isFocused} />
     </Wrapper>
   );
 };
 
-export default NavStartSec;
+export default NavStartSecTop;

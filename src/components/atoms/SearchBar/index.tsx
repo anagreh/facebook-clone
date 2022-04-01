@@ -23,6 +23,7 @@ export const FormStyled = styled.form`
 export const InputStyled = styled.input`
   border: none;
   background-color: transparent;
+  width: 1em;
 
   flex-grow: 1;
 
@@ -50,6 +51,8 @@ export const BackIconStyled = styled(FaArrowLeft)<{ isFocused: boolean }>`
   padding-inline: 0em;
   width: 0em;
 
+  flex-shrink: 0;
+
   transition: all 0.3s;
   ${(props) =>
     props.isFocused &&
@@ -71,23 +74,15 @@ export const BackIconStyled = styled(FaArrowLeft)<{ isFocused: boolean }>`
 
 interface props {
   isFocused: boolean;
-  setIsFocused: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SearchBar: React.FC<props> = ({ isFocused, setIsFocused }) => {
+const SearchBar: React.FC<props> = ({ isFocused }) => {
   return (
     <FormStyled>
-      <BackIconStyled
-        isFocused={isFocused}
-        onClick={() => setIsFocused(false)}
-      />
+      <BackIconStyled isFocused={isFocused} />
       <div>
         <SearchIconStyled isFocused={isFocused} />
-        <InputStyled
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          placeholder="Search Facebook"
-        ></InputStyled>
+        <InputStyled placeholder="Search Facebook"></InputStyled>
       </div>
     </FormStyled>
   );
