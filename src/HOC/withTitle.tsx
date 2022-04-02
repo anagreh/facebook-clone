@@ -12,11 +12,15 @@ export const Wrapper = styled.div<{ fit?: boolean }>`
     `};
 `;
 
+interface withCounterProps extends React.HTMLAttributes<HTMLElement> {
+  title?: string;
+}
+
 const withCounter = (
   OriginalComponent: React.FC<React.HTMLAttributes<HTMLElement>>,
   fit?: boolean,
-): React.FC<{ title?: string }> => {
-  return ({ title, children }) => {
+): React.FC<withCounterProps> => {
+  return ({ title, children, ...props }) => {
     const [opacity, setOpacity] = useState(0);
 
     return (
@@ -24,6 +28,7 @@ const withCounter = (
         <OriginalComponent
           onMouseOver={() => setOpacity(1)}
           onMouseLeave={() => setOpacity(0)}
+          {...props}
         >
           {children}
         </OriginalComponent>
