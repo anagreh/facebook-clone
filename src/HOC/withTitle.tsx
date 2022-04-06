@@ -4,6 +4,9 @@ import NavTitle from '../components/atoms/Title';
 
 export const Wrapper = styled.div<{ fit?: boolean }>`
   position: relative;
+  width: 100%;
+
+  line-height: 0;
 
   ${(props) =>
     props.fit &&

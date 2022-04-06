@@ -5,8 +5,18 @@ import { AccountMenuCard } from '../Card';
 import { useHeightMeasure } from '../../../hooks/useHeightMeasure';
 
 export const ViewPort = styled.div`
+  position: absolute;
+
+  top: 3.5em;
+  right: 1em;
+
+  border-radius: 0.5em;
+
   transition: height 0.5s;
   overflow: hidden;
+
+  background-color: white;
+  border: 1px solid gray;
 `;
 export const AllMenu = styled.ul`
   display: flex;
@@ -61,11 +71,13 @@ const AccountMenu = () => {
     }
   };
 
+  console.log(currMenuData.height);
+
   /*TODO: move all the card to separate file with type [[{card},[{card},{card},...]], ... ]
     card will have -href?, -icon, -title
   */
   return (
-    <ViewPort style={{ height: currMenuData.height }}>
+    <ViewPort style={{ height: currMenuData.height + 'px' }}>
       <AllMenu style={{ transform: currMenuData.transform }}>
         {/* main menu */}
         <SingleMenu ref={mainMenuRef}>

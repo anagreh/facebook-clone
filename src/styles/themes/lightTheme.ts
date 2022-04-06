@@ -16,5 +16,14 @@ export const lightTheme: DefaultTheme = {
     icon: {
       default: '#aaa',
     },
+    font: {
+      primary: 'black',
+      secondary: '#65675b',
+    },
+    logo: {
+      primary: '#4267B2',
+      LightBlue: '#00B2FF',
+      Blue: '#006AFF',
+    },
   },
 };

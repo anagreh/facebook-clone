@@ -17,6 +17,15 @@ declare module 'styled-components' {
       icon: {
         default: string;
       };
+      font: {
+        primary: string;
+        secondary: string;
+      };
+      logo: {
+        primary: string;
+        LightBlue: string;
+        Blue: string;
+      };
     };
   }
 }

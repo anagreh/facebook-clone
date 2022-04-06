@@ -5,7 +5,7 @@ export const NavTitle = styled.p`
 
   height: 2em;
 
-  top: 100%;
+  top: 110%;
 
   left: 50%;
   transform: translateX(-50%);
