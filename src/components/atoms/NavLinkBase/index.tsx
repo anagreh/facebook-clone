@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const Wrapper = styled.a`
   /* const height, width 100 */
   display: block;
-  background-color: ${({ theme }) => theme.color.bg.default || '#fff'};
 
   height: 3.5em;
   width: 100%;
