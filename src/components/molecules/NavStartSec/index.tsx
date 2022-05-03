@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useOutsideAlerter } from '../../../hooks/useOutsideAlerter';
-import { SearchCard } from '../../molecules/Card';
-import NavStartSecTop from '../../molecules/NavStartSecTop';
+import { SearchCard } from '../Card';
+import NavStartSecTop from '../NavStartSecTop';
 
 export const Wrapper = styled.div`
   position: absolute;

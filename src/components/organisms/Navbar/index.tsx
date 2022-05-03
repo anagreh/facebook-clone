@@ -1,9 +1,10 @@
 import React from 'react';
-import NavStartSec from '../organisms/NavStartSec';
-import NavBtnWithMenu from '../organisms/NavBtnWithMenu';
+import NavStartSec from '../../molecules/NavStartSec';
+import NavBtnWithMenu from '../NavBtnWithMenu';
 import styled from 'styled-components';
-import NavLink from '../molecules/NavLink';
-import NavUser from '../atoms/NavUser';
+import NavLink from '../../molecules/NavLink';
+import NavUser from '../../atoms/NavUser';
+import { FaGamepad, FaHome, FaObjectGroup } from 'react-icons/fa';
 
 export const Wrapper = styled.div`
   background-color: white;
@@ -14,6 +15,8 @@ export const Wrapper = styled.div`
   right: 0;
   display: flex;
   height: 3.5em;
+
+  z-index: 1000;
   /* border-bottom: 1px solid gray; */
 `;
 
@@ -51,9 +54,15 @@ const Navbar = () => {
         <NavStartSec />
       </StartCompWrapper>
       <NavWrapper>
-        <NavLink>H</NavLink>
-        <NavLink>T</NavLink>
-        <NavLink>Y</NavLink>
+        <NavLink title="Home" href="home">
+          <FaHome />
+        </NavLink>
+        <NavLink title="Groups" href="/groups">
+          <FaObjectGroup />
+        </NavLink>
+        <NavLink title="Game" href="/games">
+          <FaGamepad />
+        </NavLink>
       </NavWrapper>
       <UserWrapper>
         <NavUser />

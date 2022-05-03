@@ -1,8 +1,8 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { CommentOptionBtn } from '../atoms/Btn';
-import PersonalImg from '../atoms/PersonalImg';
+import { CommentOptionBtn } from '../../atoms/Btn';
+import PersonalImg from '../../atoms/PersonalImg';
 
 export const Wrapper = styled.div`
   display: flex;
