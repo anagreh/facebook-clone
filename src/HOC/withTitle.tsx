@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { HTMLAttributes, useState } from 'react';
 import styled, { css } from 'styled-components';
 import NavTitle from '../components/atoms/Title';
 
@@ -14,16 +14,16 @@ export const Wrapper = styled.div<{ fit?: boolean }>`
       width: fit-content;
     `};
 `;
+//React.AnchorHTMLAttributes<HTMLAnchorElement>
 
-interface withCounterProps extends React.HTMLAttributes<HTMLElement> {
+interface withCounterProps extends HTMLAttributes<HTMLElement> {
   title?: string;
 }
-
-const withCounter = (
-  OriginalComponent: React.FC<React.HTMLAttributes<HTMLElement>>,
+function withCounter<T extends withCounterProps>(
+  OriginalComponent: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>>,
   fit?: boolean,
-): React.FC<withCounterProps> => {
-  return ({ title, children, ...props }) => {
+) {
+  const NewComponent: React.FC<T> = (props) => {
     const [opacity, setOpacity] = useState(0);
 
     return (
@@ -33,12 +33,14 @@ const withCounter = (
           onMouseLeave={() => setOpacity(0)}
           {...props}
         >
-          {children}
+          {props.children}
         </OriginalComponent>
-        {title && <NavTitle style={{ opacity }}>{title}</NavTitle>}
+        {props.title && <NavTitle style={{ opacity }}>{props.title}</NavTitle>}
       </Wrapper>
     );
   };
-};
+
+  return NewComponent;
+}
 
 export default withCounter;

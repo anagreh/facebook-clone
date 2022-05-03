@@ -27,7 +27,7 @@ export const AllMenu = styled.ul`
   text-indent: 0;
   list-style-type: none;
 
-  transition: transform 1s;
+  transition: transform 0.5s;
   /* transform: translateX(-50%); */
 `;
 export const SingleMenu = styled.li`

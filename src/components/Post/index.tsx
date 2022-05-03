@@ -2,7 +2,7 @@ import PostAnalytic from '../atoms/PostAnalytic';
 import PostHeader from '../atoms/PostHeader';
 import PostCommentForm from '../molecules/PostCommentForm';
 import PostInteraction from '../molecules/PostInteraction';
-import Comment from '../Comment';
+import Comment from '../molecules/Comment';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -10,12 +10,12 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: 1em;
 
-  width: 50em;
-
   padding: 1em;
 
   background-color: white;
-  border: 1px solid gray;
+  border: 1px solid rgba(100, 100, 100, 0.2);
+
+  border-radius: 1em;
 `;
 
 const Post = () => {

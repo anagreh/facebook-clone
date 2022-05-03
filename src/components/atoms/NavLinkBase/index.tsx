@@ -1,7 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
-const Wrapper = styled.a`
+interface styleProps {
+  isActive: boolean;
+}
+const Wrapper = styled.a<styleProps>`
   /* const height, width 100 */
   display: block;
 
@@ -9,12 +13,29 @@ const Wrapper = styled.a`
   width: 100%;
   padding: 0.24em 0;
 
+  color: ${(props) => (props.isActive ? 'blue' : 'inherit')};
+  text-decoration: inherit;
+
+  ${(props) =>
+    props.isActive &&
+    css`
+      ::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+
+        bottom: 0;
+        background-color: blue;
+      }
+    `};
+
   svg {
     height: 1.75em;
     width: 1.75em;
   }
 `;
-export const Highlight = styled.div`
+export const Highlight = styled.div<styleProps>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,22 +48,30 @@ export const Highlight = styled.div`
   border-radius: 0.5em;
 
   transition: background-color 0.3s ease-out;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.color.bg.hover || '#ddd'};
-  }
+  ${(props) =>
+    props.isActive
+      ? ''
+      : css`
+          &:hover {
+            background-color: ${({ theme }) => theme.color.bg.hover || '#ddd'};
+          }
+        `};
 `;
 
 /**
  * NavLink has fixed height
  */
-const NavLinkBase: React.FC<React.HTMLAttributes<HTMLAnchorElement>> = ({
-  children,
-  ...props
-}) => {
+const NavLinkBase: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>> = (
+  props,
+) => {
+  const location = useLocation();
+
+  let isActive = false;
+  if (props.href && location.pathname.includes(props.href)) isActive = true;
+
   return (
-    <Wrapper {...props}>
-      <Highlight>{children}</Highlight>
+    <Wrapper isActive={isActive} {...props}>
+      <Highlight isActive={isActive}>{props.children}</Highlight>
     </Wrapper>
   );
 };
