@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FaSignal } from 'react-icons/fa';
-import NavBtn from '../../molecules/NavBtn';
-import AccountMenu from '../../molecules/AccountMenu';
+import NavBtn from '../NavBtn';
+import AccountMenu from '../AccountMenu';
 import useOutsideAlerter from '../../../hooks/useOutsideAlerter';
 
 const NavBtnWithMenu = () => {
