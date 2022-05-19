@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HeaderStyled = styled.header`
   display: flex;
@@ -34,15 +34,21 @@ export const PostDataStyled = styled.div`
 
 export const PStyled = styled.p``;
 
+const user = {
+  name: "Emam",
+  personalImgSrc: "https://source.unsplash.com/50x50/?portrait&img=3",
+};
+
+const post = { postCreationTime: new Date() };
 const PostHeader = () => {
   return (
     <HeaderStyled>
       <ImgStyled>
-        <img src="https://source.unsplash.com/50x50/?portrait&img=3" alt="" />
+        <img src={user.personalImgSrc} alt="" />
       </ImgStyled>
       <PostDataStyled>
-        <p>Emam</p>
-        <time>april 2 at 7:03 PM </time>
+        <p>{user.name}</p>
+        <time>{post.postCreationTime.toISOString()} </time>
       </PostDataStyled>
     </HeaderStyled>
   );

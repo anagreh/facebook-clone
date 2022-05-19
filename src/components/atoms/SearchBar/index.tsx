@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { FaSearch, FaArrowLeft } from 'react-icons/fa';
+import styled, { css } from "styled-components";
+import { FaSearch, FaArrowLeft } from "react-icons/fa";
 
 export const FormStyled = styled.form`
   display: flex;
@@ -40,7 +40,7 @@ export const SearchIconStyled = styled(FaSearch)<{ isFocused: boolean }>`
   padding-inline-start: 0.8em;
 
   transition: width 0.3s;
-  width: ${(props) => (props.isFocused ? '0' : '2em')};
+  width: ${(props) => (props.isFocused ? "0" : "2em")};
 
   color: ${({ theme }) => theme.color.icon.default};
 `;

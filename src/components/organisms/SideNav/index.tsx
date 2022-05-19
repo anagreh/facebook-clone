@@ -1,7 +1,8 @@
-import { FaAlipay, FaHome } from 'react-icons/fa';
+import { FaGamepad, FaObjectGroup, FaUserFriends } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const AnchorStyled = styled.a`
+export const AnchorStyled = styled(Link)`
   display: block;
   display: flex;
   align-items: center;
@@ -42,16 +43,21 @@ export const NotificationText = styled.p`
 interface SideNavLinkProps {
   Icon: React.ReactNode;
   text: string;
+  href: string;
   children?: null;
 }
 
-export const SideNavLink: React.FC<SideNavLinkProps> = ({ Icon, text }) => {
+export const SideNavLink: React.FC<SideNavLinkProps> = ({
+  Icon,
+  text,
+  href,
+}) => {
   return (
-    <AnchorStyled href="/">
+    <AnchorStyled to={href}>
       <IconWrapper>{Icon}</IconWrapper>
       <div>
         <p>{text}</p>
-        <NotificationText>&#9733; 1 new</NotificationText>
+        {false && <NotificationText>&#9733; 1 new</NotificationText>}
       </div>
     </AnchorStyled>
   );
@@ -71,65 +77,19 @@ export const LIStyled = styled.li``;
 const SideNav = () => {
   return (
     <ULStyled>
+      <LIStyled>user name</LIStyled>
       <LIStyled>
-        <SideNavLink Icon={<FaHome />} text="home" />
+        <SideNavLink
+          href={'/friends'}
+          Icon={<FaUserFriends />}
+          text="Friends"
+        />
       </LIStyled>
       <LIStyled>
-        <SideNavLink Icon={<FaHome />} text="home" />
+        <SideNavLink href={'/groups'} Icon={<FaObjectGroup />} text="Groups" />
       </LIStyled>
       <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
-      </LIStyled>
-      <LIStyled>
-        <SideNavLink Icon={<FaAlipay />} text="Lang" />
+        <SideNavLink href={'/games'} Icon={<FaGamepad />} text="Game" />
       </LIStyled>
     </ULStyled>
   );

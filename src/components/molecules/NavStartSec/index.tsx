@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useOutsideAlerter } from '../../../hooks/useOutsideAlerter';
-import { SearchCard } from '../Card';
+import { SearchCard } from '../Cards';
 import NavStartSecTop from '../NavStartSecTop';
 
 export const Wrapper = styled.div`

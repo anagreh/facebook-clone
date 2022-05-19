@@ -1,10 +1,18 @@
 import React from 'react';
 import NavStartSec from '../../molecules/NavStartSec';
-import NavBtnWithMenu from '../NavBtnWithMenu';
+import NavBtnWithMenu from '../../molecules/NavBtnWithMenu';
 import styled from 'styled-components';
 import NavLink from '../../molecules/NavLink';
 import NavUser from '../../atoms/NavUser';
-import { FaGamepad, FaHome, FaObjectGroup } from 'react-icons/fa';
+import {
+  FaGamepad,
+  FaHome,
+  FaObjectGroup,
+  FaSignal,
+  FaNetworkWired,
+} from 'react-icons/fa';
+import { SettingMenu } from '../../molecules/PopupMenu';
+import { NotificationMenu } from '../../molecules/PopupMenu';
 
 export const Wrapper = styled.div`
   background-color: white;
@@ -68,9 +76,16 @@ const Navbar = () => {
         <NavUser />
       </UserWrapper>
       <EndWrapper>
-        <NavBtnWithMenu />
-        <NavBtnWithMenu />
-        <NavBtnWithMenu />
+        <NavBtnWithMenu
+          Menu={<NotificationMenu />}
+          Icon={<FaNetworkWired />}
+          title={'Notifications'}
+        />
+        <NavBtnWithMenu
+          Menu={<SettingMenu />}
+          Icon={<FaSignal />}
+          title={'Setting'}
+        />
       </EndWrapper>
     </Wrapper>
   );

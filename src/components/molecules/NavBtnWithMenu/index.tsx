@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { FaSignal } from 'react-icons/fa';
 import NavBtn from '../NavBtn';
-import AccountMenu from '../AccountMenu';
+import { SettingMenu } from '../PopupMenu';
 import useOutsideAlerter from '../../../hooks/useOutsideAlerter';
 
-const NavBtnWithMenu = () => {
+interface props {
+  Menu: React.ReactNode;
+  title: string;
+  Icon: React.ReactNode;
+}
+
+const NavBtnWithMenu: React.FC<props> = (props) => {
   const [shown, setShown] = useState(false);
 
   const ref = useOutsideAlerter(() => setShown(false));
@@ -13,10 +19,10 @@ const NavBtnWithMenu = () => {
   };
   return (
     <div ref={ref}>
-      <NavBtn title="hi" onClick={toggleShown}>
-        <FaSignal />
+      <NavBtn title={props.title} onClick={toggleShown}>
+        {props.Icon}
       </NavBtn>
-      {shown && <AccountMenu />}
+      {shown && props.Menu}
     </div>
   );
 };
