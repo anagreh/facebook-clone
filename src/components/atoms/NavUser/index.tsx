@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import { useContext } from "react";
+import styled from "styled-components";
+import { userCtx } from "../../../context/userProvider";
 
 export const Wrapper = styled.a<{ height: string }>`
   display: flex;
@@ -8,6 +10,9 @@ export const Wrapper = styled.a<{ height: string }>`
   :hover {
     background-color: ${({ theme }) => theme.color.bg.hover};
   }
+
+  width: 7em;
+  overflow: hidden;
 
   img {
     border-radius: 50%;
@@ -23,10 +28,12 @@ export const Wrapper = styled.a<{ height: string }>`
 `;
 
 const NavUser = () => {
+  const user = useContext(userCtx);
+
   return (
     <Wrapper height="2.5em">
-      <img src="https://source.unsplash.com/30x30/?portrait&img=1" alt="emam" />
-      <p>Name</p>
+      <img src={user?.personal_img} alt="emam" />
+      <p>{user?.first_name.slice(0, 7)}</p>
     </Wrapper>
   );
 };

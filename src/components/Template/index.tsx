@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import { useContext } from "react";
+import styled from "styled-components";
+import { userCtx } from "../../context/userProvider";
 
 interface props {
   left?: boolean;
@@ -74,6 +76,7 @@ const HomePageTemplate: React.FC<HomePageTemplateProps> = ({
   Middle,
   End,
 }) => {
+  const user = useContext(userCtx);
   return (
     <Wrapper>
       <StartContainer>{Start}</StartContainer>

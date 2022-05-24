@@ -1,18 +1,18 @@
-import React from 'react';
-import NavStartSec from '../../molecules/NavStartSec';
-import NavBtnWithMenu from '../../molecules/NavBtnWithMenu';
-import styled from 'styled-components';
-import NavLink from '../../molecules/NavLink';
-import NavUser from '../../atoms/NavUser';
+import React from "react";
+import NavStartSec from "../../molecules/NavStartSec";
+import NavBtnWithMenu from "../../molecules/NavBtnWithMenu";
+import styled from "styled-components";
+import NavLink from "../../molecules/NavLink";
+import NavUser from "../../atoms/NavUser";
 import {
   FaGamepad,
   FaHome,
   FaObjectGroup,
   FaSignal,
   FaNetworkWired,
-} from 'react-icons/fa';
-import { SettingMenu } from '../../molecules/PopupMenu';
-import { NotificationMenu } from '../../molecules/PopupMenu';
+} from "react-icons/fa";
+import { SettingMenu } from "../../molecules/PopupMenu";
+import { NotificationMenu } from "../../molecules/PopupMenu";
 
 export const Wrapper = styled.div`
   background-color: white;
@@ -61,30 +61,33 @@ const Navbar = () => {
       <StartCompWrapper>
         <NavStartSec />
       </StartCompWrapper>
+
       <NavWrapper>
-        <NavLink title="Home" href="home">
+        <NavLink title="Home" to="home">
           <FaHome />
         </NavLink>
-        <NavLink title="Groups" href="/groups">
+        <NavLink title="Groups" to="/groups">
           <FaObjectGroup />
         </NavLink>
-        <NavLink title="Game" href="/games">
+        <NavLink title="Game" to="/games">
           <FaGamepad />
         </NavLink>
       </NavWrapper>
+
       <UserWrapper>
         <NavUser />
       </UserWrapper>
+
       <EndWrapper>
         <NavBtnWithMenu
           Menu={<NotificationMenu />}
           Icon={<FaNetworkWired />}
-          title={'Notifications'}
+          title={"Notifications"}
         />
         <NavBtnWithMenu
           Menu={<SettingMenu />}
           Icon={<FaSignal />}
-          title={'Setting'}
+          title={"Setting"}
         />
       </EndWrapper>
     </Wrapper>

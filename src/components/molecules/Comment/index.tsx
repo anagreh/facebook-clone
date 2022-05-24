@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import styled from 'styled-components';
-import { CommentOptionBtn } from '../../atoms/Btn';
-import PersonalImg from '../../atoms/PersonalImg';
+import styled from "styled-components";
+import { CommentOptionBtn } from "../../atoms/Btn";
+import PersonalImg from "../../atoms/PersonalImg";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -65,22 +65,19 @@ export const InterAction = styled.div`
   }
 `;
 
-const Comment = () => {
+const Comment: React.FC<{ comment: PostComment }> = ({ comment }) => {
   return (
     <Wrapper>
       <ImgWrapper>
-        <PersonalImg src="https://source.unsplash.com/50x50/?portrait&img=8" />
+        <PersonalImg src={comment.user.personal_img} />
       </ImgWrapper>
       <Body>
         <CommentBody>
           <CommentSpan>
             <p>
-              <b>Emam</b>
+              <b>{comment.user.first_name + " " + comment.user.last_name}</b>
             </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit
-              quaerat eaque est aperiam consectetur.
-            </p>
+            <p>{comment.commentContent}</p>
           </CommentSpan>
           <CommentOptionBtn />
         </CommentBody>

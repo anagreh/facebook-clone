@@ -1,6 +1,6 @@
-import React, { HTMLAttributes, useState } from 'react';
-import styled, { css } from 'styled-components';
-import NavTitle from '../components/atoms/Title';
+import React, { HTMLAttributes, useState } from "react";
+import styled, { css } from "styled-components";
+import NavTitle from "../components/atoms/Title";
 
 export const Wrapper = styled.div<{ fit?: boolean }>`
   position: relative;
@@ -16,14 +16,11 @@ export const Wrapper = styled.div<{ fit?: boolean }>`
 `;
 //React.AnchorHTMLAttributes<HTMLAnchorElement>
 
-interface withCounterProps extends HTMLAttributes<HTMLElement> {
+interface withCounterProps {
   title?: string;
 }
-function withCounter<T extends withCounterProps>(
-  OriginalComponent: React.FC<React.AnchorHTMLAttributes<HTMLAnchorElement>>,
-  fit?: boolean,
-) {
-  const NewComponent: React.FC<T> = (props) => {
+function withCounter<T>(OriginalComponent: React.FC<T>, fit?: boolean) {
+  const NewComponent: React.FC<T & withCounterProps> = (props) => {
     const [opacity, setOpacity] = useState(0);
 
     return (

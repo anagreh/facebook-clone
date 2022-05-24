@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { FaThumbsUp, FaComment, FaShare, FaEllipsisH } from 'react-icons/fa';
+import styled from "styled-components";
+import { FaThumbsUp, FaComment, FaShare, FaEllipsisH } from "react-icons/fa";
 
-export const PostBtn = styled.button`
+export const PostBtn = styled.button<{ isClicked?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,7 +15,8 @@ export const PostBtn = styled.button`
 
   background-color: transparent;
 
-  color: ${({ theme }) => theme.color.font.secondary};
+  color: ${({ theme, isClicked }) =>
+    isClicked ? theme.color.logo.Blue : theme.color.font.secondary};
 
   cursor: pointer;
   :hover {
@@ -24,30 +25,38 @@ export const PostBtn = styled.button`
 `;
 
 interface props extends React.HTMLAttributes<HTMLButtonElement> {
-  type: 'like' | 'comment' | 'share';
+  type: "like" | "comment" | "share";
+  isClicked?: boolean;
 }
 
-export const Btn: React.FC<props> = ({ type, ...props }) => {
+export const Btn: React.FC<props> = ({ type, isClicked, ...props }) => {
   switch (type) {
-    case 'comment':
+    case "comment":
       return (
         <PostBtn {...props}>
           <FaComment />
           <p>Comment</p>
         </PostBtn>
       );
-    case 'share':
+    case "share":
       return (
         <PostBtn {...props}>
           <FaShare />
           <p>Share</p>
         </PostBtn>
       );
+    case "like":
+      return (
+        <PostBtn {...props} isClicked={isClicked}>
+          <FaThumbsUp />
+          <p>Like</p>
+        </PostBtn>
+      );
     default:
       return (
         <PostBtn {...props}>
           <FaThumbsUp />
-          <p>Like</p>
+          <p>unknown</p>
         </PostBtn>
       );
   }

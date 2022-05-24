@@ -1,6 +1,6 @@
-import React from 'react';
-import { FaThumbsUp } from 'react-icons/fa';
-import styled from 'styled-components';
+import React from "react";
+import { FaThumbsUp } from "react-icons/fa";
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -19,15 +19,17 @@ export const SpanStyled = styled.span`
   }
 `;
 
-const PostAnalytic = () => {
+const PostAnalytic: React.FC<{ likesNum: number; commentsNum: number }> = (
+  props,
+) => {
   return (
     <Wrapper>
       <SpanStyled>
         <FaThumbsUp />
-        <p>1.3k likes</p>
+        <p>{props.likesNum} likes</p>
       </SpanStyled>
       <SpanStyled>
-        <p>81 comments</p>
+        <p>{props.commentsNum} comments</p>
       </SpanStyled>
     </Wrapper>
   );

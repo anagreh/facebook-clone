@@ -34,21 +34,15 @@ export const PostDataStyled = styled.div`
 
 export const PStyled = styled.p``;
 
-const user = {
-  name: "Emam",
-  personalImgSrc: "https://source.unsplash.com/50x50/?portrait&img=3",
-};
-
-const post = { postCreationTime: new Date() };
-const PostHeader = () => {
+const PostHeader: React.FC<{ post: Post }> = ({ post }) => {
   return (
     <HeaderStyled>
       <ImgStyled>
-        <img src={user.personalImgSrc} alt="" />
+        <img src={post.user.personal_img} alt="" />
       </ImgStyled>
       <PostDataStyled>
-        <p>{user.name}</p>
-        <time>{post.postCreationTime.toISOString()} </time>
+        <p>{post.user.first_name + " " + post.user.last_name}</p>
+        <time>{post.create_time_stamp} </time>
       </PostDataStyled>
     </HeaderStyled>
   );

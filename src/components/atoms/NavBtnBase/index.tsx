@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 export const BtnStyled = styled.button`
   height: 2.5em;
@@ -28,7 +28,10 @@ export const BtnStyled = styled.button`
   }
 `;
 
-const NavBtnBase: React.FC = ({ children, ...props }) => {
+const NavBtnBase: React.FC<React.HTMLAttributes<HTMLButtonElement>> = ({
+  children,
+  ...props
+}) => {
   return <BtnStyled {...props}>{children}</BtnStyled>;
 };
 

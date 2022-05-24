@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { FaSignal } from 'react-icons/fa';
-import NavBtn from '../NavBtn';
-import { SettingMenu } from '../PopupMenu';
-import useOutsideAlerter from '../../../hooks/useOutsideAlerter';
+import React, { useState } from "react";
+import NavBtn from "../NavBtn";
+import useOutsideAlerter from "../../../hooks/useOutsideAlerter";
 
 interface props {
   Menu: React.ReactNode;
