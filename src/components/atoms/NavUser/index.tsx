@@ -32,7 +32,7 @@ const NavUser = () => {
 
   return (
     <Wrapper height="2.5em">
-      <img src={user?.personal_img} alt="emam" />
+      <img src={user?.personal_img} alt="img" />
       <p>{user?.first_name.slice(0, 7)}</p>
     </Wrapper>
   );

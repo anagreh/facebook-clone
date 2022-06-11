@@ -26,6 +26,7 @@ export const InputStyled = styled.input`
 
 export const ImgWrapper = styled.div`
   width: 2.5em;
+  height: 2.5em;
   flex-shrink: 0;
 `;
 
@@ -72,8 +73,6 @@ const PostCommentForm: React.FC<{ post: Post }> = ({ post }) => {
       );
     },
     onError: (errors: Array<any>) => {
-      console.log("hi");
-
       return console.error(
         errors.find((err) => err.property === "commentContent"),
       );

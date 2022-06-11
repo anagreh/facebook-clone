@@ -31,6 +31,10 @@ export const Wrapper = styled.div`
 export const StartCompWrapper = styled.div`
   position: relative;
   min-width: 20em;
+
+  @media screen and (max-width: 800px) {
+    min-width: 7em;
+  }
 `;
 
 export const NavWrapper = styled.div`

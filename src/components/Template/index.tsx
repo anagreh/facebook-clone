@@ -43,11 +43,22 @@ export const Wrapper = styled.div`
   /* background-color: red; */
   display: grid;
   grid-template-columns: 20em auto 20em;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: auto 20em;
+  }
+  @media screen and (max-width: 800px) {
+    grid-template-columns: auto;
+  }
 `;
 
 export const StartContainer = styled(FixedSideContainer)`
   /* background-color: blueviolet; */
   left: 0;
+
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 export const MiddleContainer = styled.div`
@@ -64,6 +75,10 @@ export const MiddleContainer = styled.div`
 export const EndContainer = styled(FixedSideContainer)`
   /* background-color: blueviolet; */
   right: 0;
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 
 interface HomePageTemplateProps {
