@@ -9,5 +9,9 @@ interface CardWithSecMenu {
   icon: React.ReactNode;
   secMenu: CardWithoutSecMenu[];
 }
+interface Card {
+  title: string;
+  icon: React.ReactNode;
+}
 
-type MenuCard = CardWithoutSecMenu | CardWithSecMenu;
+type MenuCard = CardWithoutSecMenu | CardWithSecMenu | Card;

@@ -1,22 +1,20 @@
-import { FaAngleDoubleRight } from 'react-icons/fa';
-import React from 'react';
-import IconBase from '../../atoms/Icon';
-import { BtnStyled, Wrapper } from './Shared.styled';
+import { FaAngleDoubleRight } from "react-icons/fa";
+import React from "react";
+import IconBase from "../../atoms/Icon";
+import { BtnStyled, Wrapper } from "./Shared.styled";
 
 interface propsMenuCard extends React.HTMLAttributes<HTMLElement> {
   hasSecondaryMenu?: boolean;
   card: MenuCard;
   handleSecMenuCards: (cards: CardWithoutSecMenu[]) => void;
+  onClick?: () => void;
 }
 /**
  * width:default, height:fixed, margin:none
  */
 
-export const MenuCard: React.FC<propsMenuCard> = ({
-  card,
-  handleSecMenuCards,
-}) => {
-  if ('link' in card) {
+export const MenuCard: React.FC<propsMenuCard> = ({ card, onClick, handleSecMenuCards }) => {
+  if ("link" in card) {
     card as CardWithoutSecMenu;
     //link,icon,title
     return (
@@ -25,7 +23,7 @@ export const MenuCard: React.FC<propsMenuCard> = ({
         <p>{card.title} </p>
       </Wrapper>
     );
-  } else {
+  } else if ("secMenu" in card) {
     card as CardWithSecMenu;
 
     //link,icon,title
@@ -38,6 +36,15 @@ export const MenuCard: React.FC<propsMenuCard> = ({
             <FaAngleDoubleRight />
           </BtnStyled>
         }
+      </Wrapper>
+    );
+  } else {
+    card as Card;
+
+    return (
+      <Wrapper onClick={onClick}>
+        <IconBase size="2.5em">{card.icon}</IconBase>
+        <p>{card.title} </p>
       </Wrapper>
     );
   }

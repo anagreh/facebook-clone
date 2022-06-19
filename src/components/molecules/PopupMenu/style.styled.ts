@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ViewPort = styled.div`
   position: absolute;
@@ -32,4 +32,24 @@ export const SingleMenu = styled.li`
   width: 100%;
 
   flex-shrink: 0;
+`;
+
+export const BackBtn = styled.button`
+  border: none;
+  background-color: transparent;
+
+  border-radius: 50%;
+  font-size: 1.5em;
+  margin: 0.5em;
+  padding: 0.4em;
+
+  aspect-ratio: 1;
+
+  svg {
+    display: block;
+  }
+
+  :hover {
+    background-color: ${({ theme }) => theme.color.bg.icon};
+  }
 `;

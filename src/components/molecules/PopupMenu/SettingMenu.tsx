@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { MenuCard } from "../Cards";
 import { useHeightMeasure } from "../../../hooks/useHeightMeasure";
 import settingMenu from "../../../constants/settingMenu";
-import { ViewPort, AllMenu, SingleMenu } from "./style.styled";
+import { ViewPort, AllMenu, SingleMenu, BackBtn } from "./style.styled";
 import { logOutCtx } from "../../../context/userProvider";
+import { FaArrowLeft, FaSignOutAlt } from "react-icons/fa";
 
 export const SettingMenu = () => {
   const logOut = useContext(logOutCtx);
@@ -44,35 +45,30 @@ export const SettingMenu = () => {
     setCurrMenu("sec");
   };
 
+  const card: Card = {
+    title: "Sign Out",
+    icon: <FaSignOutAlt />,
+  };
+
   return (
     <ViewPort style={{ height: currMenuData.height + "px" }}>
       <AllMenu style={{ transform: currMenuData.transform }}>
         {/* main menu */}
         <SingleMenu ref={mainMenuRef}>
           {settingMenu.map((card, i) => {
-            return (
-              <MenuCard
-                card={card}
-                key={i}
-                handleSecMenuCards={handleSecMenuCards}
-              />
-            );
+            return <MenuCard card={card} key={i} handleSecMenuCards={handleSecMenuCards} />;
           })}
-          <button onClick={logOut}>log out</button>
+          <MenuCard card={card} onClick={logOut} handleSecMenuCards={handleSecMenuCards} />
         </SingleMenu>
 
         {/* sec menu */}
         <SingleMenu ref={secMenuRef}>
-          <button onClick={() => handleMenuChange("main")}>back</button>
+          <BackBtn onClick={() => handleMenuChange("main")}>
+            <FaArrowLeft />
+          </BackBtn>
 
           {secMenuCards.map((card, i) => {
-            return (
-              <MenuCard
-                card={card}
-                key={i}
-                handleSecMenuCards={handleSecMenuCards}
-              />
-            );
+            return <MenuCard card={card} key={i} handleSecMenuCards={handleSecMenuCards} />;
           })}
         </SingleMenu>
       </AllMenu>
