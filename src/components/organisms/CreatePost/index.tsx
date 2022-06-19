@@ -18,7 +18,8 @@ import {
 const postPost = async (content: string) => {
   const requestInit: RequestInit = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_JWT,
+      // localStorage.getItem("jwtToken")
+      Authorization: "Bearer " + localStorage.getItem("jwtToken"),
       Accept: "application/json",
       "Content-Type": "application/json",
     },
@@ -27,10 +28,7 @@ const postPost = async (content: string) => {
     body: JSON.stringify({ content }),
   };
 
-  const resp = await fetch(
-    process.env.REACT_APP_SERVER + `/posts`,
-    requestInit,
-  );
+  const resp = await fetch(process.env.REACT_APP_SERVER + `/posts`, requestInit);
 
   if (resp.ok === false) throw resp.statusText;
   return resp.json();
@@ -52,9 +50,9 @@ export const CreatePostForm: React.FC<{
 
       setShowForm(false);
       setFormValue("");
-      queryClient.setQueryData("posts", (oldPosts) => {
-        const posts = oldPosts as Post[];
-        return [post, ...posts];
+      queryClient.setQueryData<Post[]>("posts", (oldPosts) => {
+        if (oldPosts === undefined) return [post];
+        return [post, ...oldPosts];
       });
     },
   });
@@ -102,11 +100,7 @@ export const CreatePostForm: React.FC<{
             }}
           ></TextareaStyled>
 
-          <PostBtn
-            type="submit"
-            value="Post"
-            disabled={formValue === "" || mutatePost.isLoading}
-          />
+          <PostBtn type="submit" value="Post" disabled={formValue === "" || mutatePost.isLoading} />
         </FormStyled>
       </SectionStyled>
     </SectionWrapper>

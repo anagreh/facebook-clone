@@ -14,17 +14,14 @@ export const Wrapper = styled.div`
 const likePost = async (postId: string) => {
   const requestInit: RequestInit = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_JWT,
+      Authorization: "Bearer " + localStorage.getItem("jwtToken"),
       Accept: "application/json",
       "Content-Type": "application/json",
     },
     method: "POST",
     body: JSON.stringify({ userPost: postId }),
   };
-  const resp = await fetch(
-    process.env.REACT_APP_SERVER + `/post_likes`,
-    requestInit,
-  );
+  const resp = await fetch(process.env.REACT_APP_SERVER + `/post_likes`, requestInit);
   if (resp.ok === false) throw resp.statusText;
   return resp;
 };
@@ -32,14 +29,11 @@ const likePost = async (postId: string) => {
 const unlikePost = (likeId: string) => {
   const requestInit: RequestInit = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_JWT,
+      Authorization: "Bearer " + localStorage.getItem("jwtToken"),
     },
     method: "DELETE",
   };
-  return fetch(
-    process.env.REACT_APP_SERVER + `/post_likes/${likeId}`,
-    requestInit,
-  );
+  return fetch(process.env.REACT_APP_SERVER + `/post_likes/${likeId}`, requestInit);
 };
 
 type Props = {

@@ -5,13 +5,10 @@ import Post from "../Post";
 async function fetchPosts() {
   const requestInit: RequestInit = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_JWT,
+      Authorization: "Bearer " + localStorage.getItem("jwtToken"),
     },
   };
-  const postsResp = await fetch(
-    process.env.REACT_APP_SERVER + "/posts",
-    requestInit,
-  );
+  const postsResp = await fetch(process.env.REACT_APP_SERVER + "/posts", requestInit);
   if (postsResp.ok === false) throw postsResp.statusText;
   return postsResp.json() as Promise<Post[]>;
 }

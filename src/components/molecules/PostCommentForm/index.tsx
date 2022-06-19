@@ -30,13 +30,10 @@ export const ImgWrapper = styled.div`
   flex-shrink: 0;
 `;
 
-const postComment = async (data: {
-  userPost: string;
-  commentContent: string;
-}) => {
+const postComment = async (data: { userPost: string; commentContent: string }) => {
   const requestInit: RequestInit = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_JWT,
+      Authorization: "Bearer " + localStorage.getItem("jwtToken"),
       Accept: "application/json",
       "Content-Type": "application/json",
     },
@@ -45,10 +42,7 @@ const postComment = async (data: {
     body: JSON.stringify(data),
   };
 
-  const commentsResp = await fetch(
-    process.env.REACT_APP_SERVER + `/post_comments`,
-    requestInit,
-  );
+  const commentsResp = await fetch(process.env.REACT_APP_SERVER + `/post_comments`, requestInit);
 
   if (commentsResp.ok === false) throw commentsResp.statusText;
   return commentsResp.json();
@@ -65,23 +59,16 @@ const PostCommentForm: React.FC<{ post: Post }> = ({ post }) => {
       data.user = user;
 
       setCommentContent("");
-      queryClient.setQueryData(
-        ["postComments", { id: post._id }],
-        (comments) => {
-          return [data, ...(comments as PostComment[])];
-        },
-      );
+      queryClient.setQueryData(["postComments", { id: post._id }], (comments) => {
+        return [data, ...(comments as PostComment[])];
+      });
     },
     onError: (errors: Array<any>) => {
-      return console.error(
-        errors.find((err) => err.property === "commentContent"),
-      );
+      return console.error(errors.find((err) => err.property === "commentContent"));
     },
   });
 
-  const handleCommentSubmit: React.FormEventHandler<HTMLFormElement> = async (
-    e,
-  ) => {
+  const handleCommentSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     if (commentContent === "") return;
 

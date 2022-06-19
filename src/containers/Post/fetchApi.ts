@@ -1,7 +1,7 @@
 export async function fetchComments(post: Post) {
   const requestInit: RequestInit = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_JWT,
+      Authorization: "Bearer " + localStorage.getItem("jwtToken"),
     },
   };
 
@@ -18,7 +18,7 @@ export async function fetchComments(post: Post) {
 export async function fetchLikes(post: Post) {
   const requestInit: RequestInit = {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_JWT,
+      Authorization: "Bearer " + localStorage.getItem("jwtToken"),
     },
   };
   const likesResp = await fetch(
